@@ -14,4 +14,4 @@
 
 
 Тестирование на ветке main:
-![](https://github.com/anlika301/hse_tp_hw_2/actions/workflows/Code checks.yml/badge.svg?branch=main)
+![](https://github.com/anlika301/hse_tp_hw_2/actions/workflows/Code_checks.yml/badge.svg?branch=main)
