@@ -21,7 +21,7 @@ class MinTest(TestCase):
 
     def test_sum(self):
         time_start = time.time()
-        self.assertEqual(Program._sum(self, file), 4999950000)
+        self.assertEqual(Program._sum(self, file), 49995000)
         print("Время работы функции нахождения суммы:", time.time() - time_start, "секунд")
 
     def test_mult(self):
