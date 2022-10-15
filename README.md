@@ -13,15 +13,11 @@
 * `_mult` - функция умножения всех чисел
 
 
+
 ### График:
 ![alt text][logo]
 
-[logo]: https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png
-
-"C:\Users\An\PycharmProjects\techzad2\tp\График.jpg"
-
-
-
+[logo]: https://github.com/anlika301/hse_tp_hw_2/blob/062901d943cdfc03621ea59987263779eb186788/Grafic.jpg
 
 Тестирование на ветке main:
 ![](https://github.com/anlika301/hse_tp_hw_2/actions/workflows/Code_checks.yml/badge.svg?branch=main)
