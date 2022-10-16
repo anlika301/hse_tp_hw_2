@@ -17,6 +17,7 @@ jobs:
         run: | 
           cd $GITHUB_WORKSPACE 
       - name: Run Tests 
+        id: demo
         if: ${{ always() }}
         run: python -m unittest mintests2
         
@@ -35,7 +36,7 @@ jobs:
             Repository: ${{ github.repository }}
             
             See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}
-    - if: ${{ success(build) }}
+    - if: ${{ steps.demo.conclusion == 'success' }}
       uses: appleboy/telegram-action@master
       with:
         to: ${{ secrets.TELEGRAM_TO }}
