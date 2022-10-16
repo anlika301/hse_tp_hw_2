@@ -22,7 +22,7 @@ jobs:
           cd $GITHUB_WORKSPACE 
           python mintests2.py 
       - name: Run Tests 
-        run: python -m unittest mintests2
+        run: python -m unittest discover -v . "*_unittest.py"
 
   notifyTelegram:
     runs-on: ubuntu-latest
