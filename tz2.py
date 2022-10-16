@@ -3,11 +3,10 @@ import os
 
 class Program:
     def _sum(self, count):
-        summa = 0
-        """
+        summa = 50
         for i in count:
             summa += int(i)
-        return summa """
+        return summa
 
     def _mult(self, count):
         res = 1
