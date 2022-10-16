@@ -1,10 +1,10 @@
-name: Code checks
+name: Code_checks
  
 on: 
   push: 
-    branches: [ main, develop ] 
+    branches: [ main ] 
   pull_request: 
-    branches: [ main, develop] 
+    branches: [ main ] 
     
   workflow_dispatch: 
  
@@ -19,3 +19,15 @@ jobs:
           python mintests2.py 
       - name: Run Tests 
         run: python -m unittest discover -v . "*_unittest.py"
+
+  notifyTelegram:
+    runs-on: ubuntu-latest
+    steps:
+    - name: send custom message
+      uses: appleboy/telegram-action@master
+      with:
+        to: ${{ secrets.TELEGRAM_TO }}
+        token: ${{ secrets.TELEGRAM_TOKEN }}
+        message: |
+          The ${{ github.event_name }} event triggered final step.
+          echo This event is a pull request that had an assignee removed.
