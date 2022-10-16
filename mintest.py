@@ -1,6 +1,6 @@
 from unittest import TestCase, main
 from tz2 import Program
-#import time
+import time
 
 
 file = [i for i in range(10000)]
