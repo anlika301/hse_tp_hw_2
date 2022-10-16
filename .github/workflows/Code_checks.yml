@@ -19,6 +19,10 @@ jobs:
       - name: demo
         if: ${{ always() }}
         run: python -m unittest mintests2
+
+      - name: min
+        if: ${{ always() }}
+        run: python -m unittest mintest
       
       - if: ${{failure()}}
         name: send telegram message
