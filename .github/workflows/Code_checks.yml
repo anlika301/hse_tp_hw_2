@@ -19,6 +19,7 @@ jobs:
           python mintests2.py 
       - name: Run Tests 
         run: python -m unittest mintests2
+        
   notifyTelegram:
     runs-on: ubuntu-latest
     steps:
@@ -28,4 +29,9 @@ jobs:
         to: ${{ secrets.TELEGRAM_TO }}
         token: ${{ secrets.TELEGRAM_TOKEN }}
         message: |
-          Все ок.
+          ${{ github.actor }} created commit:
+            Commit message: ${{ github.event.commits[0].message }}
+            
+            Repository: ${{ github.repository }}
+            
+            See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}
