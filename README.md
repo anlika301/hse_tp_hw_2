@@ -19,11 +19,13 @@
 3. Проверяющие скорость работы функций при увеличении количества чисел
 4. Проверяющие превышение значения функции нахождения максимума над значением функции нахождения минимума
 
+###№ Реализован ТГ-бот:
+https://t.me/tp_tz2_av
 
-
-
-Тестирование на ветке main:
+Тестирование на ветке _main_:
 ![](https://github.com/anlika301/hse_tp_hw_2/actions/workflows/Code_checks.yml/badge.svg?branch=main)
+Тестирование на ветке _develop_:
+![](https://github.com/anlika301/hse_tp_hw_2/actions/workflows/Code_checks.yml/badge.svg?branch=develop)
 
 ### График:
 ![alt text][logo]
