@@ -19,13 +19,12 @@ jobs:
       - name: demo
         if: ${{ always() }}
         run: python -m unittest mintests2
-      - if: ${{success()}} 
-        run: echo This event is a pull request that had an assignee removed.
         
   notifyTelegram:
     runs-on: ubuntu-latest
     steps:
-    - name: send custom message
+    - if: ${{ steps.check.outcome == success() }}
+      name: send custom message
       uses: appleboy/telegram-action@master
       with:
         to: ${{ secrets.TELEGRAM_TO }}
@@ -37,5 +36,6 @@ jobs:
             Repository: ${{ github.repository }}
             
             See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}
+      
 
    
