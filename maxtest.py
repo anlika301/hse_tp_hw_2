@@ -1,8 +1,17 @@
-import unittest
+from unittest import TestCase, main
+from tz2 import Program
+import time
 
-class MyTestCase(unittest.TestCase):
-    def test_something(self):
-        self.assertEqual(True, False)  # add assertion here
+
+file = [i for i in range(10000)]
+
+
+class MaxTest(TestCase):
+    def test_max(self):
+        time_start = time.time()
+        self.assertEqual(Program._max(self, file), max(file))
+        print("Время работы функции нахождения максимума:", time.time() - time_start, "секунд")
+
 
 if __name__ == '__main__':
-    unittest.main()
+    main()
