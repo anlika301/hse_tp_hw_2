@@ -35,7 +35,7 @@ jobs:
             Repository: ${{ github.repository }}
             
             See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}
-    - if: ${{ build.steps.demo.conclusion == 'success' }}
+    - if: ${{ steps.demo.conclusion == 'success' }}
       uses: appleboy/telegram-action@master
       with:
         to: ${{ secrets.TELEGRAM_TO }}
