@@ -3,7 +3,7 @@ import os
 
 class Program:
     def _sum(self, count):
-        summa = 50
+        summa = 0
         for i in count:
             summa += int(i)
         return summa
