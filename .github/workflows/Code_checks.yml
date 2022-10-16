@@ -69,10 +69,18 @@ jobs:
           token: ${{ secrets.TELEGRAM_TOKEN }}
           message: |
              ERROR in mintest        
-      
+
+  build-max: 
+    runs-on: ubuntu-latest 
+    steps: 
+      - uses: actions/checkout@v2 
+      - name: Install deps
+        run: | 
+          cd $GITHUB_WORKSPACE         
       - name: max
         if: ${{ always() }}
         run: python -m unittest maxtest
+        
       - if: ${{failure()}}
         name: send telegram message-
         uses: appleboy/telegram-action@master
@@ -81,10 +89,18 @@ jobs:
           token: ${{ secrets.TELEGRAM_TOKEN }}
           message: |
              ERROR in maxtest 
-             
+  
+  build-sum: 
+    runs-on: ubuntu-latest 
+    steps: 
+      - uses: actions/checkout@v2 
+      - name: Install deps
+        run: | 
+          cd $GITHUB_WORKSPACE         
       - name: sum
         if: ${{ always() }}
         run: python -m unittest sumtest
+        
       - if: ${{failure()}}
         name: send telegram message-
         uses: appleboy/telegram-action@master
@@ -94,9 +110,17 @@ jobs:
           message: |
              ERROR in sumtest     
 
+  build-mult: 
+    runs-on: ubuntu-latest 
+    steps: 
+      - uses: actions/checkout@v2 
+      - name: Install deps
+        run: | 
+          cd $GITHUB_WORKSPACE         
       - name: mult
         if: ${{ always() }}
         run: python -m unittest multtest
+        
       - if: ${{failure()}}
         name: send telegram message-
         uses: appleboy/telegram-action@master
