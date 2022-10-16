@@ -16,7 +16,6 @@ jobs:
       - name: Install deps
         run: | 
           cd $GITHUB_WORKSPACE 
-          python mintests2.py 
       - name: Run Tests 
         run: python -m unittest mintests2
         if: ${{ success() }}
