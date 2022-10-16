@@ -49,7 +49,14 @@ jobs:
              Repository: ${{ github.repository }}
             
              See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}} 
-        
+
+  build-one-by-one: 
+    runs-on: ubuntu-latest 
+    steps: 
+      - uses: actions/checkout@v2 
+      - name: Install deps
+        run: | 
+          cd $GITHUB_WORKSPACE         
       - name: min
         if: ${{ always() }}
         run: python -m unittest mintest
