@@ -21,12 +21,13 @@ jobs:
         run: python -m unittest mintests2
      
       - if: ${{success()}}
-        name: send telegram message
+        name: send telegram message+
         uses: appleboy/telegram-action@master
         with:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
           message: |
+             That's okey.
              ${{ github.actor }} created commit:
              Commit message: ${{ github.event.commits[0].message }}
             
@@ -35,7 +36,7 @@ jobs:
              See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}} 
    
       - if: ${{failure()}}
-        name: send telegram message
+        name: send telegram message-
         uses: appleboy/telegram-action@master
         with:
           to: ${{ secrets.TELEGRAM_TO }}
@@ -52,6 +53,14 @@ jobs:
       - name: min
         if: ${{ always() }}
         run: python -m unittest mintest
+      - if: ${{failure()}}
+        name: send telegram message-
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          message: |
+             ERROR in mintest        
       
 
    
