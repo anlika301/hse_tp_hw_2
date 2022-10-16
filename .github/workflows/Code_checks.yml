@@ -19,11 +19,21 @@ jobs:
       - name: demo
         if: ${{ always() }}
         run: python -m unittest mintests2
-
-      - name: min
-        if: ${{ always() }}
-        run: python -m unittest mintest
-      
+     
+      - if: ${{success()}}
+        name: send telegram message
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          message: |
+             ${{ github.actor }} created commit:
+             Commit message: ${{ github.event.commits[0].message }}
+            
+             Repository: ${{ github.repository }}
+            
+             See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}} 
+   
       - if: ${{failure()}}
         name: send telegram message
         uses: appleboy/telegram-action@master
@@ -38,20 +48,10 @@ jobs:
              Repository: ${{ github.repository }}
             
              See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}} 
-             
-      - if: ${{success()}}
-        name: send telegram message
-        uses: appleboy/telegram-action@master
-        with:
-          to: ${{ secrets.TELEGRAM_TO }}
-          token: ${{ secrets.TELEGRAM_TOKEN }}
-          message: |
-             ${{ github.actor }} created commit:
-             Commit message: ${{ github.event.commits[0].message }}
-            
-             Repository: ${{ github.repository }}
-            
-             See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}} 
+        
+      - name: min
+        if: ${{ always() }}
+        run: python -m unittest mintest
       
 
    
