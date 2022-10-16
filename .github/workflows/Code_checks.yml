@@ -18,7 +18,7 @@ jobs:
           cd $GITHUB_WORKSPACE 
       - name: Run Tests 
         run: python -m unittest mintests2
-        if: ${{ success() }}
+        if: ${{ always() }}
         
   notifyTelegram:
     runs-on: ubuntu-latest
