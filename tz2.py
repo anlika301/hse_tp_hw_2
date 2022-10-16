@@ -1,6 +1,6 @@
 import os
 
-
+""""
 class Program:
     def _sum(self, count):
         summa = 0
