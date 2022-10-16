@@ -35,7 +35,23 @@ jobs:
             
             Repository: ${{ github.repository }}
             
+            See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}} - if: ${{ steps.check.outcome == success() }
+            
+    - if: ${{ steps.check.outcome == failure() }}
+      name: send custom message2
+      uses: appleboy/telegram-action@master
+      with:
+        to: ${{ secrets.TELEGRAM_TO }}
+        token: ${{ secrets.TELEGRAM_TOKEN }}
+        message: |
+            ERROR
+            ${{ github.actor }} created commit:
+            Commit message: ${{ github.event.commits[0].message }}
+            
+            Repository: ${{ github.repository }}
+            
             See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}
+            
       
 
    
