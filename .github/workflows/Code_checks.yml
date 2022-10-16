@@ -20,7 +20,7 @@ jobs:
         if: ${{ always() }}
         run: python -m unittest mintests2
       
-      - if: ${{success()}}
+      - if: ${{failure()}}
         name: send telegram message
         uses: appleboy/telegram-action@master
         with:
