@@ -50,7 +50,7 @@ jobs:
             
              See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}} 
 
-  build-one-by-one: 
+  build-min: 
     runs-on: ubuntu-latest 
     steps: 
       - uses: actions/checkout@v2 
@@ -130,3 +130,42 @@ jobs:
           message: |
              ERROR in multtest     
    
+  build-logic: 
+    runs-on: ubuntu-latest 
+    steps: 
+      - uses: actions/checkout@v2 
+      - name: Install deps
+        run: | 
+          cd $GITHUB_WORKSPACE         
+      - name: logic
+        if: ${{ always() }}
+        run: python -m unittest logictest
+        
+      - if: ${{failure()}}
+        name: send telegram message-
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          message: |
+             ERROR in logictest 
+    
+  build-time: 
+    runs-on: ubuntu-latest 
+    steps: 
+      - uses: actions/checkout@v2 
+      - name: Install deps
+        run: | 
+          cd $GITHUB_WORKSPACE         
+      - name: time
+        if: ${{ always() }}
+        run: python -m unittest timetest
+        
+      - if: ${{failure()}}
+        name: send telegram message-
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          message: |
+             ERROR in timetest 
