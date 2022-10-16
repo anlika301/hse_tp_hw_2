@@ -53,6 +53,7 @@ jobs:
       - name: min
         if: ${{ always() }}
         run: python -m unittest mintest
+        
       - if: ${{failure()}}
         name: send telegram message-
         uses: appleboy/telegram-action@master
