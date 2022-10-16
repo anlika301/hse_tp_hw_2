@@ -19,7 +19,7 @@ jobs:
       - name: demo
         if: ${{ always() }}
         run: python -m unittest mintests2
-      - if: ${{succes()}} 
+      - if: ${{success()}} 
         run: echo This event is a pull request that had an assignee removed.
         
   notifyTelegram:
